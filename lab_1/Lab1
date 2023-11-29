@@ -1,0 +1,56 @@
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Lad1
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string number = textBox1.Text;
+            string price = textBox2.Text;
+            string discount = textBox3.Text;
+            int intNumber;
+            double doublePrice;
+            double doubleDiscount;
+            double priceWithoutDiscount;
+
+            try
+            {
+                intNumber = Convert.ToInt32(number);
+                doublePrice = Convert.ToDouble(price);
+                doubleDiscount = Convert.ToDouble(discount) / 100;
+                priceWithoutDiscount = intNumber * doublePrice - intNumber * doublePrice * doubleDiscount;
+                textBox4.Text = priceWithoutDiscount.ToString();
+            }
+            catch (Exception err)
+            {
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                Console.WriteLine("{0} Exception caught.", err);
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
